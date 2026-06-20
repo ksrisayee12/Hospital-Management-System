@@ -1,0 +1,25 @@
+# Environment Variables
+.env
+
+# Local Vault & Database Storage
+local_vault_storage/
+chroma_data/
+
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE Settings
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
