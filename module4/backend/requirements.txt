@@ -1,0 +1,27 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.35
+psycopg2-binary==2.9.9
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.9
+alembic==1.13.2
+
+# Rate limiting (3.2)
+slowapi==0.1.9
+
+# Fraud detection upgrade path (3.3) — always installed (small dependency)
+scikit-learn==1.5.2
+numpy==1.26.4
+joblib==1.4.2
+
+# Complaint intelligence upgrade path (3.4)
+# Kept commented out by default; sentence-transformers pulls in PyTorch (~1GB).
+# Uncomment and set ENABLE_SEMANTIC_COMPLAINT_CLASSIFIER=true to enable.
+# sentence-transformers==3.1.1
+
+# Testing
+pytest==8.3.3
+httpx==0.27.2

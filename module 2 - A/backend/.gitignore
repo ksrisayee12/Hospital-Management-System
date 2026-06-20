@@ -1,34 +1,32 @@
 # Virtual Environments
 venv/
-.venv/
 env/
-module 2 - A/venv/
-module 2 - A/backend/venv/
-
-# Environment Variables
 .env
-module 2 - A/backend/.env
-
-# Local Vault, Uploads, & Database Storage
-local_vault_storage/
-vault_storage/
-temp_uploads/
-chroma_data/
-chroma_db/
+.venv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# C extensions
 *.so
 
 # Database files
 *.db
 *.sqlite3
 
+# Uploads and User Data
+temp_uploads/
+vault_storage/
+chroma_db/
+*.jpg
+*.jpeg
+*.png
+*.pdf
+
 # System/IDE Files
 .DS_Store
-Thumbs.db
 .idea/
 .vscode/
 .gemini/
