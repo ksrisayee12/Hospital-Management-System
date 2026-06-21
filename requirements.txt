@@ -1,0 +1,12 @@
+Flask==3.0.3
+flask-cors==4.0.1
+python-dotenv==1.0.1
+supabase==2.31.0
+websockets==14.0
+chromadb
+sentence-transformers
+transformers
+torch
+accelerate
+pillow
+requests
