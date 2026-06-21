@@ -70,3 +70,12 @@ require_admin = require_roles("admin", "super_admin")
 require_super_admin = require_roles("super_admin")
 require_doctor = require_roles("doctor")
 require_patient = require_roles("patient")
+
+from datetime import datetime, timedelta
+
+def create_access_token(sub: str, role: str, hospital_id: str | None = None) -> str:
+    expires_delta = timedelta(hours=24)
+    expire = datetime.utcnow() + expires_delta
+    to_encode = {"sub": sub, "role": role, "hospital_id": hospital_id, "exp": expire}
+    encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
+    return encoded_jwt

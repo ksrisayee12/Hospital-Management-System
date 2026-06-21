@@ -10,12 +10,15 @@ import os
 import sys
 from logging.config import fileConfig
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
 # ── Put the module4 root on sys.path so "from models import ..." works ─────
-_MODULE4_ROOT = Path(__file__).resolve().parent.parent
+_MODULE4_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 if str(_MODULE4_ROOT) not in sys.path:
     sys.path.insert(0, str(_MODULE4_ROOT))
 
@@ -39,6 +42,17 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 
+MODULE_4_TABLES = {
+    'audit_logs', 'ledger_events', 'complaints', 
+    'security_alerts', 'trust_scores', 'hospital_metrics', 
+    'emergency_overrides'
+}
+
+def include_name(name, type_, parent_names):
+    if type_ == "table":
+        return name in MODULE_4_TABLES
+    return True
+
 def run_migrations_offline() -> None:
     """
     Run migrations in 'offline' mode.
@@ -52,6 +66,7 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        include_name=include_name,
     )
 
     with context.begin_transaction():
@@ -74,6 +89,7 @@ def run_migrations_online() -> None:
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
+            include_name=include_name,
         )
 
         with context.begin_transaction():
